@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.mctom.learn.mapper.QuestionMapper">
+
+    <resultMap id="BaseResultMap" type="online.mctom.learn.entity.Question">
+            <id property="questionId" column="question_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="questionContent" column="question_content" jdbcType="VARCHAR"/>
+            <result property="questionTime" column="question_time" jdbcType="TIMESTAMP"/>
+            <result property="questionStatus" column="question_status" jdbcType="INTEGER"/>
+            <result property="answerContent" column="answer_content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        question_id,user_id,question_content,
+        question_time,question_status,answer_content
+    </sql>
+    <insert id="insert">
+        INSERT INTO web.questions (user_id,question_content,
+                                   question_time,question_status,answer_content)
+        value  (#{userId}, #{questionContent}, #{questionTime}, #{questionStatus}, #{answerContent})
+    </insert>
+    <update id="update">
+        UPDATE web.questions
+        set  question_content = #{questionContent},
+             question_time = #{questionTime},
+             question_status = #{questionStatus},
+             answer_content = #{answerContent}
+        where question_id = #{questionId}
+    </update>
+</mapper>

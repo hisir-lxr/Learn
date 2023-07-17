@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.mctom.learn.mapper.CourseEvaluationMapper">
+
+    <resultMap id="BaseResultMap" type="online.mctom.learn.entity.CourseEvaluation">
+            <id property="evaluationId" column="evaluation_id" jdbcType="INTEGER"/>
+            <result property="courseId" column="course_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="evaluationResult" column="evaluation_result" jdbcType="VARCHAR"/>
+            <result property="evaluationTime" column="evaluation_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        evaluation_id,course_id,user_id,
+        evaluation_result,evaluation_time
+    </sql>
+</mapper>

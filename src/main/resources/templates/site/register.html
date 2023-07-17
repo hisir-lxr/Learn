@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<div>
+  <form id="form_register">
+    <label for="input-username">
+      用户名：
+      <input type="text" id="input-username" name="userName" placeholder="请输入帐号" required>
+    </label>
+    <br>
+
+    <label for="input-account">
+      帐号：
+      <input type="text" id="input-account" name="userAccount" placeholder="请输入帐号" required>
+    </label>
+    <br>
+
+    <label for="input-password">
+      密码：
+      <input type="password" id="input-password" name="userPwd" placeholder="请输入密码" required>
+    </label>
+    <br>
+
+
+    <br>
+    <input type="button" value="注册" onclick="userRegister()">
+    <br>
+    <input type="reset" value="重置">
+  </form>
+</div>
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript">
+  function userRegister() {
+    $.post(
+            "/user/register",
+            $("#form_register").serialize(),
+            function (result) {
+              console.log(result)
+              if (result != null && result.code === 200) {
+                alert("用户注册，即将去往登录界面")
+                window.location.href = "/user/login"
+              } else {
+                alert(result.message)
+              }
+            },
+            "json"
+    )
+  }
+</script>
+</body>
+</html>

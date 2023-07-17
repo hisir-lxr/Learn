@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.mctom.learn.mapper.LearningRecordMapper">
+
+    <resultMap id="BaseResultMap" type="online.mctom.learn.entity.LearningRecord">
+            <id property="recordId" column="record_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="sectionId" column="section_id" jdbcType="INTEGER"/>
+            <result property="learningTime" column="learning_time" jdbcType="INTEGER"/>
+            <result property="recordStatus" column="record_status" jdbcType="INTEGER"/>
+            <result property="score" column="score" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        record_id,user_id,section_id,
+        learning_time,record_status,score
+    </sql>
+    <select id="selectByUserId" resultType="online.mctom.learn.entity.LearningRecord">
+        SELECT * FROM web.learning_records
+        where user_id = #{userId}
+    </select>
+</mapper>

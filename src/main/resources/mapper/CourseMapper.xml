@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.mctom.learn.mapper.CourseMapper">
+
+    <resultMap id="BaseResultMap" type="online.mctom.learn.entity.Course">
+            <id property="courseId" column="course_id" jdbcType="INTEGER"/>
+            <result property="courseName" column="course_name" jdbcType="VARCHAR"/>
+            <result property="courseDescription" column="course_description" jdbcType="VARCHAR"/>
+            <result property="courseType" column="course_type" jdbcType="VARCHAR"/>
+            <result property="courseDuration" column="course_duration" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        course_id,course_name,course_description,
+        course_type,course_duration
+    </sql>
+    <insert id="insert" parameterType="course">
+        INSERT INTO web.courses (course_name,course_description,
+                                 course_type,course_duration)
+        value (#{courseName}, #{courseDescription}, #{courseType}, #{courseDuration})
+    </insert>
+    <select id="selectAll" resultType="online.mctom.learn.entity.Course">
+        SELECT * FROM web.courses
+    </select>
+    <select id="selectByType" resultType="online.mctom.learn.entity.Course">
+        SELECT * FROM web.courses where course_type = #{courseType}
+    </select>
+</mapper>

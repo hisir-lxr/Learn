@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户登录</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+</head>
+<body>
+<div>
+    <form id="form_login">
+        <label for="input-account">
+            帐号：
+            <input type="text" id="input-account" name="userAccount" placeholder="请输入用户名" required>
+        </label>
+        <br>
+
+        <label for="input-password">
+            密码：
+            <input type="password" id="input-password" name="userPwd" placeholder="请输入密码" required>
+        </label>
+        <br>
+
+
+        <br>
+        <input type="button" value="登录" onclick="userLogin()">
+        <br>
+        <input type="reset" value="重置">
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript">
+    function userLogin() {
+        $.post(
+            "/user/login",
+            $("#form_login").serialize(),
+            function (result) {
+                console.log(result)
+                if (result != null && result.code === 200) {
+                    alert("用户登录成功，即将去往前台数据展示页面")
+                    window.location.href = "/index"
+                } else {
+                    alert(result.message)
+                }
+            },
+            "json"
+        )
+    }
+</script>
+</body>
+</html>

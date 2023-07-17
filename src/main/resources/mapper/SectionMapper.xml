@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.mctom.learn.mapper.SectionMapper">
+
+    <resultMap id="BaseResultMap" type="online.mctom.learn.entity.Section">
+            <id property="sectionId" column="section_id" jdbcType="INTEGER"/>
+            <result property="sectionName" column="section_name" jdbcType="VARCHAR"/>
+            <result property="sectionOrder" column="section_order" jdbcType="INTEGER"/>
+            <result property="courseId" column="course_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        section_id,section_name,section_order,
+        course_id
+    </sql>
+    <select id="selectAll" resultType="online.mctom.learn.entity.Section">
+        select * from web.sections
+    </select>
+</mapper>
