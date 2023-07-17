@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.mctom.learn.mapper.ExerciseMapper">
+
+    <resultMap id="BaseResultMap" type="online.mctom.learn.entity.Exercise">
+            <id property="exerciseId" column="exercise_id" jdbcType="INTEGER"/>
+            <result property="sectionId" column="section_id" jdbcType="INTEGER"/>
+            <result property="exerciseType" column="exercise_type" jdbcType="INTEGER"/>
+            <result property="exerciseQuestion" column="exercise_question" jdbcType="VARCHAR"/>
+            <result property="exerciseOptions" column="exercise_options" jdbcType="VARCHAR"/>
+            <result property="exerciseAnswer" column="exercise_answer" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        exercise_id,section_id,exercise_type,
+        exercise_question,exercise_options,exercise_answer,
+        create_time
+    </sql>
+    <insert id="insert">
+        INSERT INTO web.exercises (section_id,exercise_type,
+                                   exercise_question,exercise_options,exercise_answer,
+                                   create_time)
+        value (#{sectionId}, #{exerciseType}, #{exerciseQuestion}, #{exerciseOptions}, #{exerciseAnswer}, #{createTime})
+    </insert>
+</mapper>
